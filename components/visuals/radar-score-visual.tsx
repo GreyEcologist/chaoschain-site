@@ -37,7 +37,7 @@ export function RadarScoreVisual() {
 
   return (
     <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5">
-      <svg viewBox="0 0 120 126" className="mx-auto w-full max-w-md">
+      <svg viewBox="-6 0 132 126" className="mx-auto w-full max-w-md">
         {[0.4, 0.65, 0.9].map((ratio) => (
           <polygon
             key={ratio}

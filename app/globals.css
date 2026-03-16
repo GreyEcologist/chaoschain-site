@@ -89,6 +89,197 @@ body {
   background-color: rgb(39 39 42 / 0.9);
 }
 
+@keyframes wordmark-breathe {
+  0%,
+  100% {
+    gap: 0.18em;
+  }
+  50% {
+    gap: 0.22em;
+  }
+}
+
+@keyframes wordmark-shimmer {
+  0% {
+    background-position: -170% 0;
+  }
+  100% {
+    background-position: 170% 0;
+  }
+}
+
+@keyframes wordmark-signal-flow {
+  0% {
+    transform: translateX(-24%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.16;
+  }
+  55% {
+    opacity: 0.28;
+  }
+  85% {
+    opacity: 0.12;
+  }
+  100% {
+    transform: translateX(124%);
+    opacity: 0;
+  }
+}
+
+.brand-wordmark-wrap {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  white-space: nowrap;
+  cursor: default;
+  overflow: hidden;
+}
+
+.brand-wordmark {
+  grid-area: 1 / 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18em;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  line-height: 1;
+  animation: wordmark-breathe 6.6s ease-in-out infinite;
+  will-change: gap;
+}
+
+.brand-wordmark-base {
+  position: relative;
+  z-index: 3;
+  color: #111111;
+}
+
+.brand-letter {
+  display: inline-block;
+  width: 0.72em;
+  text-align: center;
+  font-weight: 600;
+  transition:
+    font-weight 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 420ms ease;
+}
+
+.brand-letter-active {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.brand-signal-layer {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.brand-signal-pulse {
+  position: absolute;
+  left: -28%;
+  top: 54%;
+  width: 42%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(13, 148, 136, 0), rgba(13, 148, 136, 0.32), rgba(13, 148, 136, 0));
+  filter: blur(0.2px);
+  animation: wordmark-signal-flow 5.4s linear infinite;
+}
+
+.brand-wordmark-shimmer {
+  position: relative;
+  z-index: 4;
+  color: transparent;
+  pointer-events: none;
+  opacity: 0.2;
+  background-image: linear-gradient(112deg, transparent 18%, rgba(17, 24, 39, 0.5) 50%, transparent 82%);
+  background-size: 220% 100%;
+  background-repeat: no-repeat;
+  background-position: -170% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: wordmark-shimmer 8.2s linear infinite;
+  transition: opacity 280ms ease;
+}
+
+.brand-wordmark-wrap:hover .brand-wordmark {
+  animation-duration: 5.5s;
+}
+
+.brand-wordmark-wrap:hover .brand-wordmark-base {
+  color: #0f172a;
+}
+
+.brand-wordmark-wrap:hover .brand-wordmark-shimmer {
+  opacity: 0.34;
+}
+
+.brand-wordmark-wrap:hover .brand-signal-pulse {
+  animation-duration: 4.2s;
+}
+
+.logo-signal-wrap {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 0.35rem;
+  padding: 0.2rem 0.15rem;
+}
+
+.logo-signal-row {
+  position: absolute;
+  left: -18%;
+  width: 136%;
+  height: 6px;
+  opacity: 0.28;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(31, 41, 55, 0.22) 1px, transparent 1.6px);
+  background-size: 13px 6px;
+  animation: logo-signal-scan 6.8s linear infinite;
+}
+
+.logo-signal-row-1 {
+  top: 1px;
+  animation-delay: 0s;
+}
+
+.logo-signal-row-2 {
+  top: 9px;
+  animation-delay: 1.2s;
+}
+
+.logo-signal-row-3 {
+  top: 20px;
+  animation-delay: 0.45s;
+}
+
+.logo-signal-row-4 {
+  top: 30px;
+  animation-delay: 1.8s;
+}
+
+@keyframes logo-signal-scan {
+  0% {
+    transform: translateX(-6%);
+    opacity: 0.14;
+  }
+  18% {
+    opacity: 0.32;
+  }
+  55% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translateX(8%);
+    opacity: 0.14;
+  }
+}
+
 @media (max-width: 768px) {
   .section-shell {
     width: min(1200px, calc(100% - 1.5rem));
@@ -97,5 +288,14 @@ body {
   .section-divider {
     margin-top: 4rem;
     padding-top: 4rem;
+  }
+
+  .brand-wordmark,
+  .brand-wordmark-shimmer {
+    font-size: 0.98rem;
+  }
+
+  .logo-signal-row-4 {
+    display: none;
   }
 }

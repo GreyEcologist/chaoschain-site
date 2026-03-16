@@ -8,6 +8,17 @@ export function SiteFooter() {
 
         <div className="flex items-center gap-3">
           <a
+            href="https://github.com/ChaosChain/chaoschain"
+            aria-label="ChaosChain on GitHub"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-700 text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"
+          >
+            <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true">
+              <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.1.82-.26.82-.57v-2c-3.34.73-4.04-1.42-4.04-1.42-.55-1.38-1.34-1.74-1.34-1.74-1.1-.75.08-.73.08-.73 1.21.09 1.85 1.23 1.85 1.23 1.08 1.84 2.82 1.31 3.5 1 .1-.77.42-1.31.77-1.61-2.67-.3-5.47-1.32-5.47-5.9 0-1.3.47-2.37 1.23-3.2-.12-.3-.53-1.53.12-3.18 0 0 1-.32 3.3 1.22a11.6 11.6 0 0 1 6 0c2.3-1.54 3.3-1.22 3.3-1.22.65 1.65.24 2.88.12 3.18.76.83 1.23 1.9 1.23 3.2 0 4.6-2.8 5.6-5.48 5.9.43.37.82 1.1.82 2.22v3.29c0 .31.22.67.83.56A12 12 0 0 0 12 .5Z" />
+            </svg>
+          </a>
+          <a
             href="#"
             aria-label="ChaosChain on X"
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-700 text-zinc-300 transition-colors hover:border-zinc-500 hover:text-zinc-100"

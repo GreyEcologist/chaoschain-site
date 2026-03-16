@@ -1,98 +1,114 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+const scoreSequence = [91.7, 91.8, 91.9, 91.8] as const;
+
+const metrics = [
+  { label: "Initiative", value: 94 },
+  { label: "Collaboration", value: 92 },
+  { label: "Reasoning", value: 95 },
+  { label: "Output Quality", value: 93 },
+  { label: "Communication", value: 90 },
+] as const;
+
+const verificationItems = ["Execution receipts", "Evidence anchor", "Validator consensus"] as const;
 
 export function PipelineVisual() {
-  const scoreRows = [
-    { name: "Verifier A", values: "[82,74,90]" },
-    { name: "Verifier B", values: "[85,70,91]" },
-    { name: "Verifier C", values: "[80,76,88]" },
-  ];
+  const [scoreIndex, setScoreIndex] = useState(1);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setScoreIndex((prev) => (prev + 1) % scoreSequence.length);
+    }, 2800);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const trustScore = scoreSequence[scoreIndex];
 
   return (
-    <div className="rounded-2xl border border-zinc-800 bg-zinc-950/70 p-5 font-mono shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] md:p-6">
-      <div className="rounded-xl border border-zinc-700/80 p-4 md:p-5">
-        <p className="text-center text-[11px] uppercase tracking-[0.2em] text-zinc-400 md:text-xs">
-          Accountability Flow
-        </p>
-
-        <div className="mt-4 space-y-3 text-xs text-zinc-300 md:text-[13px]">
-          <div className="rounded-lg border border-zinc-700/80 bg-zinc-900/50 p-3">
-            <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-500">Step 1</p>
-            <p className="mt-1 text-zinc-100">Agent Executes Work</p>
-            <div className="mt-2 flex items-center gap-3 text-zinc-400">
-              <span>Payment ○</span>
-              <span>Task ○</span>
-              <span>Service ○</span>
-            </div>
-          </div>
-
-          <motion.p
-            className="text-center text-zinc-500"
-            animate={{ opacity: [0.35, 0.85, 0.35] }}
-            transition={{ duration: 3.8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          >
-            ↓
-          </motion.p>
-
-          <div className="rounded-lg border border-zinc-700/80 bg-zinc-900/50 p-3">
-            <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-500">Step 2</p>
-            <p className="mt-1 text-zinc-100">ChaosChain Records Event</p>
-            <div className="mt-2 grid grid-cols-3 gap-2 text-zinc-400">
-              <span>Action Hash</span>
-              <span>Timestamp</span>
-              <span>Evidence</span>
-              <span className="text-zinc-300">0x8fa21...</span>
-              <span className="text-zinc-300">13:42:11</span>
-              <span className="text-zinc-300">Anchor</span>
-            </div>
-          </div>
-
-          <motion.p
-            className="text-center text-zinc-500"
-            animate={{ opacity: [0.35, 0.85, 0.35] }}
-            transition={{ duration: 3.8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 0.4 }}
-          >
-            ↓
-          </motion.p>
-
-          <div className="rounded-lg border border-zinc-700/80 bg-zinc-900/50 p-3">
-            <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-500">Step 3</p>
-            <p className="mt-1 text-zinc-100">Verifiers Score Output</p>
-            <div className="mt-2 grid gap-1 text-zinc-300">
-              {scoreRows.map((row) => (
-                <div key={row.name} className="flex items-center justify-between gap-3">
-                  <span className="text-zinc-400">{row.name}</span>
-                  <span>{row.values}</span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-2 text-zinc-400">Initiative · Compliance · Efficiency</p>
-          </div>
-
-          <motion.p
-            className="text-center text-zinc-500"
-            animate={{ opacity: [0.35, 0.85, 0.35] }}
-            transition={{ duration: 3.8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 0.8 }}
-          >
-            ↓
-          </motion.p>
-
-          <div className="rounded-lg border border-zinc-700/80 bg-zinc-900/50 p-3">
-            <p className="text-[10px] uppercase tracking-[0.18em] text-zinc-500">Step 4</p>
-            <p className="mt-1 text-zinc-100">Portable Reputation</p>
-            <p className="mt-2 text-zinc-300">Trust Score: 84.7</p>
-            <p className="mt-1 text-zinc-300">API: GET /v1/agent/8472/reputation</p>
+    <div className="rounded-2xl border border-[#E5E7EB] bg-white p-5 shadow-[0_16px_45px_rgba(2,6,23,0.08)] md:p-6">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#111111]">Proof of Agency (PoA)</h3>
+        </div>
+        <div className="rounded-lg border border-teal-200 bg-teal-50 px-3 py-2 text-center">
+          <p className="text-[10px] uppercase tracking-[0.14em] text-teal-700/75">Trust Score</p>
+          <AnimatePresence mode="wait" initial={false}>
             <motion.p
-              className="mt-1 text-emerald-300"
-              animate={{ opacity: [0.45, 1, 0.45] }}
-              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              key={trustScore}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.25 }}
+              className="mt-1 text-3xl font-semibold text-teal-700"
             >
-              Status: VERIFIED
+              {trustScore.toFixed(1)}
             </motion.p>
-          </div>
+          </AnimatePresence>
         </div>
       </div>
+
+      <div className="mt-5 grid gap-3 sm:grid-cols-2">
+        <InfoField label="Agent ID" value="Agent-472" />
+        <InfoField label="Trust Score" value={trustScore.toFixed(1)} />
+      </div>
+
+      <div className="mt-6 space-y-3">
+        <p className="text-xs uppercase tracking-[0.16em] text-zinc-500">The 5 Universal Dimensions</p>
+        {metrics.map((metric, index) => (
+          <div key={metric.label} className="space-y-1.5">
+            <div className="flex items-center justify-between text-sm text-zinc-700">
+              <span>{metric.label}</span>
+              <span className="font-medium text-zinc-900">{metric.value}%</span>
+            </div>
+            <div className="h-2 rounded-full bg-zinc-100">
+              <motion.div
+                className="h-full rounded-full bg-gradient-to-r from-teal-500/85 to-cyan-500/75"
+                animate={{ width: [`${metric.value - 1}%`, `${metric.value + 1}%`, `${metric.value - 1}%`] }}
+                transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY, delay: index * 0.24 }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-6 space-y-2 rounded-lg border border-[#E5E7EB] bg-zinc-50 px-4 py-3">
+        <p className="text-xs uppercase tracking-[0.16em] text-zinc-500">Verification</p>
+        {verificationItems.map((item, index) => (
+          <motion.div
+            key={item}
+            className="flex items-center justify-between text-sm text-zinc-700"
+            animate={{ opacity: [0.72, 1, 0.72] }}
+            transition={{ duration: 3.2, repeat: Number.POSITIVE_INFINITY, delay: index * 0.3 }}
+          >
+            <span>{item}</span>
+            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-xs text-emerald-700">
+              ✓
+            </span>
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="mt-5 rounded-lg border border-[#E5E7EB] bg-zinc-50 px-4 py-2.5 text-xs text-zinc-600">
+        Last verified: 14:32:18
+      </div>
+    </div>
+  );
+}
+
+type InfoFieldProps = {
+  label: string;
+  value: string;
+};
+
+function InfoField({ label, value }: InfoFieldProps) {
+  return (
+    <div className="rounded-lg border border-[#E5E7EB] bg-zinc-50 px-3 py-2.5">
+      <p className="text-[10px] uppercase tracking-[0.12em] text-zinc-500">{label}</p>
+      <p className="mt-1 text-sm font-medium text-zinc-900">{value}</p>
     </div>
   );
 }

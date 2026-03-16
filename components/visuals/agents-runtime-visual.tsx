@@ -18,6 +18,49 @@ type RuntimeEvent = {
   timestamp: string;
 };
 
+const initialEvents: RuntimeEvent[] = [
+  {
+    id: 1,
+    agent: "Agent-128",
+    action: "executing trade",
+    scoreDelta: "+1.1",
+    receipt: "rcpt_74ad01",
+    timestamp: "14:32:18",
+  },
+  {
+    id: 2,
+    agent: "Agent-901",
+    action: "treasury rebalance",
+    scoreDelta: "+0.9",
+    receipt: "rcpt_2cf91a",
+    timestamp: "14:32:15",
+  },
+  {
+    id: 3,
+    agent: "Agent-392",
+    action: "compliance check",
+    scoreDelta: "+1.2",
+    receipt: "rcpt_19fe83",
+    timestamp: "14:32:13",
+  },
+  {
+    id: 4,
+    agent: "Agent-472",
+    action: "executing payment",
+    scoreDelta: "+0.8",
+    receipt: "rcpt_42ac9f",
+    timestamp: "14:32:10",
+  },
+  {
+    id: 5,
+    agent: "Agent-674",
+    action: "cross-chain settlement",
+    scoreDelta: "+1.0",
+    receipt: "rcpt_68ab10",
+    timestamp: "14:32:07",
+  },
+];
+
 const templates: RuntimeEventTemplate[] = [
   { agent: "Agent-128", action: "executing trade", scoreDelta: "+1.1" },
   { agent: "Agent-901", action: "treasury rebalance", scoreDelta: "+0.9" },
@@ -55,13 +98,7 @@ function makeEvent(index: number): RuntimeEvent {
 export function AgentsRuntimeVisual() {
   const cursorRef = useRef(5);
   const [scoreIndex, setScoreIndex] = useState(2);
-  const [events, setEvents] = useState<RuntimeEvent[]>(() => [
-    makeEvent(0),
-    makeEvent(1),
-    makeEvent(2),
-    makeEvent(3),
-    makeEvent(4),
-  ]);
+  const [events, setEvents] = useState<RuntimeEvent[]>(initialEvents);
 
   useEffect(() => {
     const feedTimer = setInterval(() => {
@@ -89,10 +126,9 @@ export function AgentsRuntimeVisual() {
       <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-[0_10px_40px_rgba(2,6,23,0.06)] md:p-7">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <p className="text-xs uppercase tracking-[0.18em] text-zinc-500">Product Artifact</p>
-            <h3 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900">Agent Reputation Profile</h3>
+            <h3 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900">Proof of Agency (PoA)</h3>
           </div>
-          <div className="rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-right">
+          <div className="rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-center">
             <p className="text-[10px] uppercase tracking-[0.14em] text-zinc-500">Trust Score</p>
             <AnimatePresence mode="wait" initial={false}>
               <motion.p
