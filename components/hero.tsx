@@ -3,10 +3,10 @@ import { PipelineVisual } from "@/components/visuals/pipeline-visual";
 
 export function Hero() {
   return (
-    <section className="border-b border-zinc-200 bg-[#F6F7F8] py-16 md:py-20">
-      <div className="section-shell">
+    <section className="hero-depth-lights relative overflow-hidden border-b border-zinc-200 py-16 md:py-20">
+      <div className="section-shell relative z-10">
         <div className="grid items-start gap-12 lg:grid-cols-[1.05fr_1fr]">
-          <div className="space-y-8 md:space-y-10">
+          <div className="relative z-10 space-y-8 md:space-y-10">
             <h1 className="text-balance text-5xl leading-[1.04] font-semibold text-[#111111] md:text-7xl">
               The Accountability Protocol
               <br />

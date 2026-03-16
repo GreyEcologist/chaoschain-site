@@ -12,8 +12,17 @@ export default function Home() {
   return (
     <main className="relative overflow-x-clip">
       <div className="page-grid pointer-events-none absolute inset-0 -z-10" />
-      <div className="bg-[#F6F7F8]">
-        <div className="section-shell pt-6 md:pt-8">
+      <div className="relative overflow-hidden bg-[#F6F7F8]">
+        <Image
+          src="/Logo mark dark.png"
+          alt=""
+          aria-hidden="true"
+          width={1200}
+          height={1200}
+          className="hero-monument-mark-global pointer-events-none select-none"
+          priority
+        />
+        <div className="section-shell relative z-10 pt-6 md:pt-8">
           <div className="logo-signal-wrap" aria-label="ChaosChain">
             <span className="logo-signal-row logo-signal-row-1" aria-hidden="true" />
             <span className="logo-signal-row logo-signal-row-2" aria-hidden="true" />
@@ -29,8 +38,8 @@ export default function Home() {
             />
           </div>
         </div>
+        <Hero />
       </div>
-      <Hero />
       <ProblemSection />
       <SolutionSection />
       <StudiosSection />
