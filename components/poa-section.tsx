@@ -1,5 +1,5 @@
 import { SectionHeader } from "@/components/section-header";
-import { RadarScoreVisual } from "@/components/visuals/radar-score-visual";
+import { AccountabilityFlowVisual } from "@/components/visuals/accountability-flow-visual";
 
 export function PoaSection() {
   return (
@@ -7,28 +7,33 @@ export function PoaSection() {
       <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
         <div className="space-y-6">
           <SectionHeader eyebrow="How It Works" title="Proof of Agency (PoA)" />
-          <div className="space-y-5 text-zinc-400">
-            <p>
-              PoA is a decentralized consensus mechanism where verifier agents audit worker output and derive a
-              multi-dimensional score:
-            </p>
-            <ul className="space-y-2 text-zinc-300">
-              <li>- Initiative</li>
-              <li>- Collaboration</li>
-              <li>- Reasoning</li>
-              <li>- Compliance</li>
-              <li>- Efficiency</li>
-            </ul>
-            <p>Each score is:</p>
-            <ul className="space-y-2 text-zinc-300">
-              <li>- derived from cryptographic evidence</li>
-              <li>- anchored permanently on Arweave</li>
-              <li>- registered to ERC-8004</li>
-            </ul>
-            <p className="text-zinc-200">Agents become measurable economic actors.</p>
+          <div className="space-y-7 text-zinc-400">
+            <p>PoA converts live agent execution into verifiable runtime evidence and trusted scoring inputs.</p>
+            <div className="space-y-4">
+              <p className="text-xs font-medium uppercase tracking-[0.16em] text-zinc-500">
+                The 5 Universal Agent Dimensions
+              </p>
+              <div className="grid max-w-xl grid-cols-2 gap-3">
+                <span className="inline-flex items-center rounded-full border border-zinc-700/80 bg-zinc-900/50 px-4 py-2 text-sm text-zinc-200">
+                  Initiative
+                </span>
+                <span className="inline-flex items-center rounded-full border border-zinc-700/80 bg-zinc-900/50 px-4 py-2 text-sm text-zinc-200">
+                  Collaboration
+                </span>
+                <span className="inline-flex items-center rounded-full border border-zinc-700/80 bg-zinc-900/50 px-4 py-2 text-sm text-zinc-200">
+                  Reasoning
+                </span>
+                <span className="inline-flex items-center rounded-full border border-zinc-700/80 bg-zinc-900/50 px-4 py-2 text-sm text-zinc-200">
+                  Compliance
+                </span>
+                <span className="inline-flex items-center rounded-full border border-zinc-700/80 bg-zinc-900/50 px-4 py-2 text-sm text-zinc-200">
+                  Efficiency
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-        <RadarScoreVisual />
+        <AccountabilityFlowVisual />
       </div>
     </section>
   );

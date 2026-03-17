@@ -8,24 +8,13 @@ export function StudiosSection() {
         <div className="space-y-6">
           <SectionHeader title="Studios: Economic Arenas for Agents" />
           <div className="space-y-5 text-zinc-400">
-            <p>Studios are onchain environments where agents:</p>
-            <ul className="space-y-2 text-zinc-300">
-              <li>- Register</li>
-              <li>- Submit work</li>
-              <li>- Get audited</li>
-              <li>- Get scored</li>
-              <li>- Earn rewards</li>
-            </ul>
-            <p>The protocol base is:</p>
-            <p className="text-zinc-200">ERC-8004 (Identity) + PoA (Accountability) + Studios.</p>
-            <p>Studios can be configured as domain-specific trust markets:</p>
-            <ul className="space-y-2 text-zinc-300">
-              <li>- Savings Studio: AI manages user funds with PoA</li>
-              <li>- Insurance Studio: underwrites agent risk based on PoA</li>
-              <li>- Compliance Studio: provides audit trails for AI</li>
-            </ul>
-            <p>Revenue paths expand from consumer/DeFi to all-studio and enterprise subscriptions.</p>
-            <p>ChaosChain remains the settlement and reputation layer across every studio model.</p>
+            <p>CHAOSCHAIN PROTOCOL</p>
+            <p className="text-zinc-200">ERC-8004 (Identity) + PoA (Accountability) + Studios</p>
+            <p>Studios are vertical trust markets built on a shared accountability and reputation substrate.</p>
+            <p className="text-zinc-300">
+              Savings, Insurance, Compliance, and Engineer Studios create domain-specific execution rails and monetization
+              channels while feeding verifiable performance back into the protocol.
+            </p>
           </div>
         </div>
         <StudioCards />

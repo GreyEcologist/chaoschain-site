@@ -41,7 +41,7 @@ const modeClasses = {
   problem: {
     cardBorder: "border-zinc-800/90",
     cardBg: "bg-[radial-gradient(circle_at_50%_0%,rgba(42,12,18,0.16),rgba(7,10,18,0.95)_45%)]",
-    rail: "bg-[repeating-linear-gradient(to_bottom,rgba(113,113,122,0.42)_0px,rgba(113,113,122,0.42)_10px,transparent_10px,transparent_20px)]",
+    railSegment: "bg-[repeating-linear-gradient(to_bottom,rgba(113,113,122,0.42)_0px,rgba(113,113,122,0.42)_8px,transparent_8px,transparent_14px)]",
     arrow: "text-zinc-500",
     detailBorder: "border-red-900/60",
     detailBg: "bg-red-950/25",
@@ -59,7 +59,7 @@ const modeClasses = {
   solution: {
     cardBorder: "border-zinc-700/90",
     cardBg: "bg-[radial-gradient(circle_at_50%_0%,rgba(18,46,58,0.18),rgba(7,10,18,0.95)_44%)]",
-    rail: "bg-[repeating-linear-gradient(to_bottom,rgba(113,113,122,0.52)_0px,rgba(113,113,122,0.52)_14px,transparent_14px,transparent_24px)]",
+    railSegment: "bg-[repeating-linear-gradient(to_bottom,rgba(113,113,122,0.52)_0px,rgba(113,113,122,0.52)_10px,transparent_10px,transparent_16px)]",
     arrow: "text-cyan-200/75",
     detailBorder: "border-cyan-700/60",
     detailBg: "bg-cyan-950/25",
@@ -90,10 +90,7 @@ export function FlowCard({ mode, title, sectionLabel, children }: FlowCardProps)
           <p className="mt-6 text-center text-[10px] uppercase tracking-[0.26em] text-zinc-500 md:text-xs">{sectionLabel}</p>
         ) : null}
 
-        <div className="relative mt-8 flex flex-col items-center gap-6 md:mt-10 md:gap-7">
-          <div className={`pointer-events-none absolute top-0 bottom-0 left-1/2 w-px -translate-x-1/2 ${colors.rail}`} />
-          {children}
-        </div>
+        <div className="relative mt-8 flex flex-col items-center gap-6 md:mt-10 md:gap-7">{children}</div>
       </div>
     </div>
   );
@@ -103,13 +100,17 @@ export function RailConnector({ mode }: { mode: Mode }) {
   const colors = modeClasses[mode];
 
   return (
-    <motion.div
-      className={`relative z-10 grid h-8 w-8 place-items-center rounded-full border border-zinc-700/70 bg-zinc-900/95 text-lg ${colors.arrow}`}
-      animate={{ y: [0, 2, 0], opacity: [0.72, 1, 0.72] }}
-      transition={{ duration: 3.6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-    >
-      ↓
-    </motion.div>
+    <div className="relative z-10 flex flex-col items-center">
+      <div className={`h-4 w-px ${colors.railSegment}`} />
+      <motion.div
+        className={`grid h-8 w-8 place-items-center rounded-full border border-zinc-700/70 bg-zinc-900/95 text-lg ${colors.arrow}`}
+        animate={{ y: [0, 2, 0], opacity: [0.72, 1, 0.72] }}
+        transition={{ duration: 3.6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+      >
+        ↓
+      </motion.div>
+      <div className={`h-4 w-px ${colors.railSegment}`} />
+    </div>
   );
 }
 

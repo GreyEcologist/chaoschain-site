@@ -1,8 +1,10 @@
+import Image from "next/image";
+
 export function SiteFooter() {
   return (
     <footer className="section-shell section-divider pb-8 md:pb-10">
       <div className="flex flex-col items-start gap-4 rounded-2xl border border-zinc-900/80 bg-zinc-950/75 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-6">
-        <p className="text-sm font-semibold tracking-[0.3em] text-zinc-100 md:text-base">CHAOSCHAIN</p>
+        <Image src="/Logo light.png" alt="ChaosChain" width={360} height={40} className="h-5 w-auto md:h-6" />
 
         <p className="text-sm text-zinc-400 md:text-base">ChaosChain 2026. All Rights Reserved</p>
 

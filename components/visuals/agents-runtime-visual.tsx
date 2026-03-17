@@ -6,14 +6,14 @@ import { useEffect, useRef, useState } from "react";
 type RuntimeEventTemplate = {
   agent: string;
   action: string;
-  scoreDelta: string;
+  trustScore: number;
 };
 
 type RuntimeEvent = {
   id: number;
   agent: string;
   action: string;
-  scoreDelta: string;
+  trustScore: number;
   receipt: string;
   timestamp: string;
 };
@@ -23,7 +23,7 @@ const initialEvents: RuntimeEvent[] = [
     id: 1,
     agent: "Agent-128",
     action: "executing trade",
-    scoreDelta: "+1.1",
+    trustScore: 91,
     receipt: "rcpt_74ad01",
     timestamp: "14:32:18",
   },
@@ -31,7 +31,7 @@ const initialEvents: RuntimeEvent[] = [
     id: 2,
     agent: "Agent-901",
     action: "treasury rebalance",
-    scoreDelta: "+0.9",
+    trustScore: 95,
     receipt: "rcpt_2cf91a",
     timestamp: "14:32:15",
   },
@@ -39,7 +39,7 @@ const initialEvents: RuntimeEvent[] = [
     id: 3,
     agent: "Agent-392",
     action: "compliance check",
-    scoreDelta: "+1.2",
+    trustScore: 87,
     receipt: "rcpt_19fe83",
     timestamp: "14:32:13",
   },
@@ -47,7 +47,7 @@ const initialEvents: RuntimeEvent[] = [
     id: 4,
     agent: "Agent-472",
     action: "executing payment",
-    scoreDelta: "+0.8",
+    trustScore: 90,
     receipt: "rcpt_42ac9f",
     timestamp: "14:32:10",
   },
@@ -55,18 +55,18 @@ const initialEvents: RuntimeEvent[] = [
     id: 5,
     agent: "Agent-674",
     action: "cross-chain settlement",
-    scoreDelta: "+1.0",
+    trustScore: 94,
     receipt: "rcpt_68ab10",
     timestamp: "14:32:07",
   },
 ];
 
 const templates: RuntimeEventTemplate[] = [
-  { agent: "Agent-128", action: "executing trade", scoreDelta: "+1.1" },
-  { agent: "Agent-901", action: "treasury rebalance", scoreDelta: "+0.9" },
-  { agent: "Agent-392", action: "compliance check", scoreDelta: "+1.2" },
-  { agent: "Agent-472", action: "executing payment", scoreDelta: "+0.8" },
-  { agent: "Agent-674", action: "cross-chain settlement", scoreDelta: "+1.0" },
+  { agent: "Agent-128", action: "executing trade", trustScore: 91 },
+  { agent: "Agent-901", action: "treasury rebalance", trustScore: 95 },
+  { agent: "Agent-392", action: "compliance check", trustScore: 87 },
+  { agent: "Agent-472", action: "executing payment", trustScore: 90 },
+  { agent: "Agent-674", action: "cross-chain settlement", trustScore: 94 },
 ];
 
 const trustScoreSequence = [91.5, 91.6, 91.7, 91.8] as const;
@@ -89,10 +89,16 @@ function makeEvent(index: number): RuntimeEvent {
     id: Date.now() + index,
     agent: template.agent,
     action: template.action,
-    scoreDelta: template.scoreDelta,
+    trustScore: template.trustScore,
     receipt: `rcpt_${(index * 9473 + 1921).toString(16).slice(0, 6)}`,
     timestamp: stamp,
   };
+}
+
+function trustScoreBadgeClass(score: number) {
+  if (score >= 90) return "border-emerald-200 bg-emerald-50 text-emerald-700";
+  if (score >= 85) return "border-zinc-300 bg-zinc-100 text-zinc-700";
+  return "border-amber-200 bg-amber-50 text-amber-700";
 }
 
 export function AgentsRuntimeVisual() {
@@ -122,8 +128,8 @@ export function AgentsRuntimeVisual() {
   const trustScore = trustScoreSequence[scoreIndex];
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-      <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-[0_10px_40px_rgba(2,6,23,0.06)] md:p-7">
+    <div className="grid items-stretch gap-6 lg:grid-cols-[1fr_1fr]">
+      <div className="h-full rounded-2xl border border-zinc-200 bg-white p-6 shadow-[0_10px_40px_rgba(2,6,23,0.06)] md:p-7">
         <div className="flex items-start justify-between gap-4">
           <div>
             <h3 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900">Proof of Agency (PoA)</h3>
@@ -177,7 +183,7 @@ export function AgentsRuntimeVisual() {
         </div>
       </div>
 
-      <div className="flex h-[34rem] flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-[0_10px_40px_rgba(2,6,23,0.06)] md:p-7">
+      <div className="flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-[0_10px_40px_rgba(2,6,23,0.06)] md:p-7">
         <div className="flex items-center justify-between">
           <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">Live Runtime</h3>
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-emerald-700">
@@ -190,18 +196,19 @@ export function AgentsRuntimeVisual() {
           </div>
         </div>
 
-        <div className="mt-5 flex-1 overflow-hidden">
+        <div className="mt-5 flex-1 overflow-y-auto pr-1">
           <div className="space-y-3">
-            <AnimatePresence initial={false}>
-              {events.map((event) => (
+            {events.map((event, index) => {
+              const rowScores = [91, 95, 87, 90, 94] as const;
+              const displayScore = rowScores[index % rowScores.length];
+
+              return (
                 <motion.div
                   key={event.id}
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  whileHover={{ y: -2 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="rounded-xl border border-zinc-200 bg-zinc-50/80 px-4 py-3"
+                  className="flex h-[5.9rem] flex-col justify-between rounded-xl border border-zinc-200 bg-zinc-50/80 px-4 py-3"
                 >
                   <div className="flex items-center justify-between gap-4">
                     <p className="text-[15px] text-zinc-900">
@@ -212,13 +219,15 @@ export function AgentsRuntimeVisual() {
 
                   <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
                     <p className="text-xs text-zinc-500">receipt {event.receipt} → verification</p>
-                    <span className="rounded-md border border-teal-200 bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-700">
-                      {event.scoreDelta}
+                    <span
+                      className={`inline-flex min-w-10 items-center justify-center rounded-md border px-2.5 py-1 text-xs font-semibold leading-none ${trustScoreBadgeClass(displayScore)}`}
+                    >
+                      {displayScore}
                     </span>
                   </div>
                 </motion.div>
-              ))}
-            </AnimatePresence>
+              );
+            })}
           </div>
         </div>
       </div>
