@@ -15,13 +15,24 @@
   --font-mono: var(--font-plex-mono);
 }
 
-* {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   border-color: rgb(39 39 42 / 1);
 }
 
-html,
-body {
+html {
+  width: 100%;
   min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  min-width: 320px;
+  overflow-x: hidden;
 }
 
 body {
@@ -33,6 +44,14 @@ body {
   color: var(--foreground);
 }
 
+img,
+svg,
+canvas,
+video {
+  display: block;
+  max-width: 100%;
+}
+
 .page-grid {
   background-image: linear-gradient(to right, rgb(39 39 42 / 0.15) 1px, transparent 1px),
     linear-gradient(to bottom, rgb(39 39 42 / 0.13) 1px, transparent 1px);
@@ -41,8 +60,24 @@ body {
 }
 
 .section-shell {
-  width: min(1200px, calc(100% - 2.5rem));
+  width: min(1200px, calc(100% - clamp(1rem, 3vw, 2.5rem)));
   margin-inline: auto;
+}
+
+.responsive-split {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.responsive-split > * {
+  min-width: 0;
+}
+
+@media (min-width: 1024px) {
+  .responsive-split {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 4rem;
+  }
 }
 
 .section-divider {
@@ -336,7 +371,7 @@ body {
 
 @media (max-width: 768px) {
   .section-shell {
-    width: min(1200px, calc(100% - 1.5rem));
+    width: min(1200px, calc(100% - 1rem));
   }
 
   .section-divider {

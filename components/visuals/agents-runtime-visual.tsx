@@ -128,13 +128,13 @@ export function AgentsRuntimeVisual() {
   const trustScore = trustScoreSequence[scoreIndex];
 
   return (
-    <div className="grid items-stretch gap-6 lg:grid-cols-[1fr_1fr]">
-      <div className="h-full rounded-2xl border border-zinc-200 bg-white p-6 shadow-[0_10px_40px_rgba(2,6,23,0.06)] md:p-7">
-        <div className="flex items-start justify-between gap-4">
-          <div>
+    <div className="grid items-stretch gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <div className="min-w-0 h-full rounded-2xl border border-zinc-200 bg-white p-5 shadow-[0_10px_40px_rgba(2,6,23,0.06)] md:p-7">
+        <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+          <div className="min-w-0">
             <h3 className="mt-2 text-2xl font-semibold tracking-tight text-zinc-900">Proof of Agency (PoA)</h3>
           </div>
-          <div className="rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-center">
+          <div className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-center sm:w-auto">
             <p className="text-[10px] uppercase tracking-[0.14em] text-zinc-500">Trust Score</p>
             <AnimatePresence mode="wait" initial={false}>
               <motion.p
@@ -183,8 +183,8 @@ export function AgentsRuntimeVisual() {
         </div>
       </div>
 
-      <div className="flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-[0_10px_40px_rgba(2,6,23,0.06)] md:p-7">
-        <div className="flex items-center justify-between">
+      <div className="min-w-0 flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-5 shadow-[0_10px_40px_rgba(2,6,23,0.06)] md:p-7">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">Live Runtime</h3>
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-medium uppercase tracking-[0.14em] text-emerald-700">
             <motion.span
@@ -208,17 +208,17 @@ export function AgentsRuntimeVisual() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="flex h-[5.9rem] flex-col justify-between rounded-xl border border-zinc-200 bg-zinc-50/80 px-4 py-3"
+                  className="flex min-w-0 min-h-[5.9rem] flex-col justify-between rounded-xl border border-zinc-200 bg-zinc-50/80 px-4 py-3"
                 >
-                  <div className="flex items-center justify-between gap-4">
-                    <p className="text-[15px] text-zinc-900">
+                  <div className="flex items-start justify-between gap-4">
+                    <p className="min-w-0 text-[15px] text-zinc-900">
                       <span className="font-semibold">{event.agent}</span> {event.action}
                     </p>
                     <span className="text-xs text-zinc-500">{event.timestamp}</span>
                   </div>
 
                   <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
-                    <p className="text-xs text-zinc-500">receipt {event.receipt} → verification</p>
+                    <p className="min-w-0 break-all text-xs text-zinc-500">receipt {event.receipt} → verification</p>
                     <span
                       className={`inline-flex min-w-10 items-center justify-center rounded-md border px-2.5 py-1 text-xs font-semibold leading-none ${trustScoreBadgeClass(displayScore)}`}
                     >

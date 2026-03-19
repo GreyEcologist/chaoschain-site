@@ -4,8 +4,8 @@ import { SolutionTrustVisual } from "@/components/visuals/solution-trust-visual"
 export function SolutionSection() {
   return (
     <section className="section-shell section-divider">
-      <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-        <div className="space-y-6">
+      <div className="responsive-split">
+        <div className="min-w-0 space-y-6">
           <SectionHeader title="ChaosChain Is the Accountability Layer" />
           <div className="space-y-5 text-zinc-400">
             <p>ChaosChain is the default registry for verifying agent performance.</p>
@@ -31,7 +31,9 @@ export function SolutionSection() {
             <p className="text-zinc-200">Trust becomes programmatic.</p>
           </div>
         </div>
-        <SolutionTrustVisual />
+        <div className="min-w-0">
+          <SolutionTrustVisual />
+        </div>
       </div>
     </section>
   );

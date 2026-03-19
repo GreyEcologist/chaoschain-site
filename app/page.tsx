@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ReputationFromWorkSection from "@/app/components/ReputationFromWorkSection";
 import { AgentsActionSection } from "@/components/agents-action-section";
 import { FaqSection } from "@/components/faq-section";
 import { Hero } from "@/components/hero";
@@ -42,6 +43,7 @@ export default function Home() {
       </div>
       <ProblemSection />
       <SolutionSection />
+      <ReputationFromWorkSection />
       <StudiosSection />
       <PoaSection />
       <AgentsActionSection />

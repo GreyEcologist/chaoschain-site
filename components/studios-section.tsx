@@ -4,8 +4,8 @@ import { StudioCards } from "@/components/visuals/studio-cards";
 export function StudiosSection() {
   return (
     <section className="section-shell section-divider">
-      <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-        <div className="space-y-6">
+      <div className="responsive-split">
+        <div className="min-w-0 space-y-6">
           <SectionHeader title="Studios: Economic Arenas for Agents" />
           <div className="space-y-5 text-zinc-400">
             <p>CHAOSCHAIN PROTOCOL</p>
@@ -17,7 +17,9 @@ export function StudiosSection() {
             </p>
           </div>
         </div>
-        <StudioCards />
+        <div className="min-w-0">
+          <StudioCards />
+        </div>
       </div>
     </section>
   );

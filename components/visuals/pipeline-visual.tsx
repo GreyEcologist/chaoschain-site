@@ -29,12 +29,12 @@ export function PipelineVisual() {
   const trustScore = scoreSequence[scoreIndex];
 
   return (
-    <div className="rounded-2xl border border-[#E5E7EB] bg-white p-5 shadow-[0_16px_45px_rgba(2,6,23,0.08)] md:p-6">
-      <div className="flex items-start justify-between gap-4">
-        <div>
+    <div className="min-w-0 rounded-2xl border border-[#E5E7EB] bg-white p-4 shadow-[0_16px_45px_rgba(2,6,23,0.08)] sm:p-5 md:p-6">
+      <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
+        <div className="min-w-0">
           <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#111111]">Proof of Agency (PoA)</h3>
         </div>
-        <div className="rounded-lg border border-teal-200 bg-teal-50 px-3 py-2 text-center">
+        <div className="w-full rounded-lg border border-teal-200 bg-teal-50 px-3 py-2 text-center sm:w-auto">
           <p className="text-[10px] uppercase tracking-[0.14em] text-teal-700/75">Trust Score</p>
           <AnimatePresence mode="wait" initial={false}>
             <motion.p

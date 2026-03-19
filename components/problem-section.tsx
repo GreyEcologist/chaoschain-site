@@ -4,8 +4,8 @@ import { ProblemTrustVisual } from "@/components/visuals/problem-trust-visual";
 export function ProblemSection() {
   return (
     <section className="section-shell section-divider">
-      <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
-        <div className="space-y-6">
+      <div className="responsive-split">
+        <div className="min-w-0 space-y-6">
           <SectionHeader title="The Agent Economy Has No Trust Primitive" />
           <div className="space-y-5 text-zinc-400">
             <p>
@@ -27,7 +27,9 @@ export function ProblemSection() {
             <p>The agent economy is waiting for its risk infrastructure.</p>
           </div>
         </div>
-        <ProblemTrustVisual />
+        <div className="min-w-0">
+          <ProblemTrustVisual />
+        </div>
       </div>
     </section>
   );

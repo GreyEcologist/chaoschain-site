@@ -81,7 +81,7 @@ export function FlowCard({ mode, title, sectionLabel, children }: FlowCardProps)
 
   return (
     <div
-      className={`relative overflow-hidden rounded-2xl border p-7 font-mono shadow-[inset_0_0_0_1px_rgba(255,255,255,0.015)] md:p-8 ${colors.cardBorder} ${colors.cardBg}`}
+      className={`relative min-w-0 overflow-hidden rounded-2xl border p-5 font-mono shadow-[inset_0_0_0_1px_rgba(255,255,255,0.015)] sm:p-6 md:p-8 ${colors.cardBorder} ${colors.cardBg}`}
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.03),transparent_48%)]" />
       <div className="relative">

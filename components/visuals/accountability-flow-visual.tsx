@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 
 export function AccountabilityFlowVisual() {
   return (
-    <div className="rounded-2xl border border-zinc-800 bg-zinc-950/75 p-5 font-mono shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] md:p-6">
+    <div className="min-w-0 rounded-2xl border border-zinc-800 bg-zinc-950/75 p-5 font-mono shadow-[inset_0_0_0_1px_rgba(255,255,255,0.02)] md:p-6">
       <div className="space-y-4">
         <FlowStep
           step="STEP 1"
@@ -20,7 +20,7 @@ export function AccountabilityFlowVisual() {
           title="ChaosChain Records Event"
           highlighted
           content={
-            <div className="grid grid-cols-3 gap-2 text-xs text-zinc-400 md:text-[12px]">
+            <div className="grid grid-cols-1 gap-2 text-xs text-zinc-400 sm:grid-cols-3 md:text-[12px]">
               <span>Action Hash</span>
               <span>Timestamp</span>
               <span>Evidence Anchor</span>
