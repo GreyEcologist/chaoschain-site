@@ -3,7 +3,7 @@ import { StudioCards } from "@/components/visuals/studio-cards";
 
 export function StudiosSection() {
   return (
-    <section className="section-shell section-divider">
+    <section className="section-shell">
       <div className="responsive-split">
         <div className="min-w-0 space-y-6">
           <SectionHeader title="Studios: Economic Arenas for Agents" />

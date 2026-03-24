@@ -158,7 +158,7 @@ export function AgentsRuntimeVisual() {
         </div>
 
         <div className="mt-6 space-y-3">
-          {metricRows.map((metric) => (
+          {metricRows.map((metric, index) => (
             <div key={metric.label} className="space-y-1.5">
               <div className="flex items-center justify-between text-sm text-zinc-700">
                 <span>{metric.label}</span>
@@ -167,9 +167,15 @@ export function AgentsRuntimeVisual() {
               <div className="h-2 rounded-full bg-zinc-100">
                 <motion.div
                   className="h-full rounded-full bg-gradient-to-r from-teal-500/85 to-cyan-500/80"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${metric.value}%` }}
-                  transition={{ duration: 0.9, ease: "easeOut" }}
+                  initial={{ width: `${metric.value - 1}%` }}
+                  whileInView={{ width: [`${metric.value - 1}%`, `${metric.value + 1}%`, `${metric.value - 1}%`] }}
+                  viewport={{ once: true, amount: 0.35 }}
+                  transition={{
+                    duration: 5,
+                    repeat: Number.POSITIVE_INFINITY,
+                    delay: index * 0.24,
+                    ease: "easeInOut",
+                  }}
                 />
               </div>
             </div>

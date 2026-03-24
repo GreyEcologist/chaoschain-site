@@ -44,17 +44,42 @@ export function FaqSection() {
         <div className="mt-10 divide-y divide-zinc-800 border-y border-zinc-800">
           {faqs.map((faq, index) => {
             const isOpen = activeIndex === index;
+            const itemNumber = String(index + 1).padStart(2, "0");
 
             return (
-              <div key={faq.question} className="py-6 md:py-7">
+              <motion.div
+                key={faq.question}
+                className="py-6 md:py-7"
+                initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{
+                  delay: index * 0.1,
+                  duration: 0.58,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
                 <button
                   type="button"
                   onClick={() => setActiveIndex((prev) => (prev === index ? -1 : index))}
                   className="flex w-full items-start justify-between gap-6 text-left"
                   aria-expanded={isOpen}
                 >
-                  <span className={`text-base leading-snug md:text-xl ${isOpen ? "text-zinc-100" : "text-zinc-400"}`}>
-                    {faq.question}
+                  <span className="flex min-w-0 items-start gap-4 md:gap-5">
+                    <span
+                      className={`min-w-8 pt-0.5 font-mono text-[11px] tracking-[0.18em] md:min-w-10 md:text-xs ${
+                        isOpen ? "text-cyan-200" : "text-cyan-200/70"
+                      }`}
+                    >
+                      {itemNumber}
+                    </span>
+                    <span
+                      className={`min-w-0 text-base leading-snug md:text-xl ${
+                        isOpen ? "text-zinc-100" : "text-zinc-400"
+                      }`}
+                    >
+                      {faq.question}
+                    </span>
                   </span>
                   <span className={`text-2xl leading-none ${isOpen ? "text-zinc-200" : "text-zinc-500"}`}>
                     {isOpen ? "×" : "+"}
@@ -74,7 +99,7 @@ export function FaqSection() {
                     </motion.p>
                   ) : null}
                 </AnimatePresence>
-              </div>
+              </motion.div>
             );
           })}
         </div>

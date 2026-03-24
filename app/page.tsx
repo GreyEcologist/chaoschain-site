@@ -5,6 +5,7 @@ import { FaqSection } from "@/components/faq-section";
 import { Hero } from "@/components/hero";
 import { PoaSection } from "@/components/poa-section";
 import { ProblemSection } from "@/components/problem-section";
+import SectionSignalSeparator from "@/components/section-signal-separator";
 import { SiteFooter } from "@/components/site-footer";
 import { SolutionSection } from "@/components/solution-section";
 import { StudiosSection } from "@/components/studios-section";
@@ -42,9 +43,13 @@ export default function Home() {
         <Hero />
       </div>
       <ProblemSection />
+      <SectionSignalSeparator />
       <SolutionSection />
+      <SectionSignalSeparator />
       <ReputationFromWorkSection />
+      <SectionSignalSeparator />
       <StudiosSection />
+      <SectionSignalSeparator />
       <PoaSection />
       <AgentsActionSection />
       <FaqSection />

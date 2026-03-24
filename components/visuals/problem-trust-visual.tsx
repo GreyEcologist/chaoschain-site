@@ -11,9 +11,13 @@ import {
 export function ProblemTrustVisual() {
   return (
     <FlowCard mode="problem" title="TRUST GAP IN AI AGENTS" sectionLabel="TODAY">
-      <NodeBox className="max-w-[26rem]">Enterprise</NodeBox>
+      <NodeBox mode="problem" className="max-w-[26rem]">
+        Enterprise
+      </NodeBox>
       <RailConnector mode="problem" />
-      <NodeBox className="max-w-[26rem]">AI Agent</NodeBox>
+      <NodeBox mode="problem" className="max-w-[26rem]">
+        AI Agent
+      </NodeBox>
       <RailConnector mode="problem" />
       <DetailPanel
         mode="problem"
@@ -24,7 +28,7 @@ export function ProblemTrustVisual() {
       <RailConnector mode="problem" />
       <HeroOutcomeBox
         mode="problem"
-        title="Trust Failure"
+        title="🔴 Trust Failure"
         lines={["Capital cannot be safely delegated"]}
         className="max-w-[26rem] text-center"
       />

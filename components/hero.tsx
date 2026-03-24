@@ -8,9 +8,9 @@ export function Hero() {
         <div className="responsive-split items-start gap-12">
           <div className="relative z-10 min-w-0 space-y-8 md:space-y-10">
             <h1 className="text-balance text-4xl leading-[1.04] font-semibold text-[#111111] sm:text-5xl md:text-7xl">
-              The Accountability Protocol
+              The Accountability
               <br />
-              for Autonomous Agents
+              Protocol for Autonomous Agents
             </h1>
             <p className="max-w-2xl text-lg leading-relaxed text-[#6B7280] md:text-xl">
               ChaosChain gives organizations accountability and governance over autonomous AI agents.

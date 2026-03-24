@@ -81,8 +81,8 @@ export default function ReputationFromWorkSection() {
   const goNext = () => setActiveStage((current) => (current === stageMeta.length - 1 ? 0 : current + 1));
 
   return (
-    <section aria-labelledby="reputation-from-work-title" className="section-shell section-divider">
-      <div className="mx-auto grid max-w-7xl gap-12 py-4 xl:grid-cols-[minmax(0,0.74fr)_minmax(0,1.26fr)] xl:gap-12 xl:py-6">
+    <section aria-labelledby="reputation-from-work-title" className="section-shell">
+      <div className="mx-auto grid max-w-7xl gap-12 py-4 xl:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] xl:gap-10 xl:py-6">
         <div className="min-w-0 space-y-8">
           <div className="max-w-2xl space-y-4">
             <p className="text-xs font-medium uppercase tracking-[0.22em] text-zinc-500">How Reputation Is Earned</p>
@@ -135,7 +135,7 @@ export default function ReputationFromWorkSection() {
         </div>
 
         <motion.div
-          className="relative min-w-0 overflow-hidden rounded-[1.9rem] border border-zinc-800/80 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.08),rgba(10,10,14,0.96)_36%),linear-gradient(180deg,rgba(24,24,27,0.96),rgba(10,10,14,1))] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_0_0_1px_rgba(255,255,255,0.02)] backdrop-blur sm:p-5 xl:p-6"
+          className="relative min-w-0 self-start overflow-hidden rounded-[1.9rem] border border-zinc-800/80 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.08),rgba(10,10,14,0.96)_36%),linear-gradient(180deg,rgba(24,24,27,0.96),rgba(10,10,14,1))] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.34),inset_0_0_0_1px_rgba(255,255,255,0.02)] backdrop-blur sm:p-5 xl:p-6"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
