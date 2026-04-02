@@ -181,12 +181,6 @@ export function AgentsRuntimeVisual() {
             </div>
           ))}
         </div>
-
-        <div className="mt-6 grid gap-2 rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 text-xs text-zinc-600 sm:grid-cols-3">
-          <p>Last verified: 14:32:18</p>
-          <p>Evidence anchor: verified</p>
-          <p>Rule set: active</p>
-        </div>
       </div>
 
       <div className="min-w-0 flex h-full flex-col rounded-2xl border border-zinc-200 bg-white p-5 shadow-[0_10px_40px_rgba(2,6,23,0.06)] md:p-7">

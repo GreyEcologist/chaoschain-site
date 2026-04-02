@@ -10,22 +10,18 @@ import {
 
 export function SolutionTrustVisual() {
   return (
-    <FlowCard mode="solution" title="WITH CHAOSCHAIN">
-      <NodeBox mode="solution" className="max-w-[26rem]">
-        Enterprise
-      </NodeBox>
-      <RailConnector mode="solution" />
+    <FlowCard mode="solution" title="WITH CHAOSCHAIN" contentClassName="mt-4 gap-3 md:mt-5 md:gap-3.5">
       <NodeBox mode="solution" className="max-w-[26rem]">
         AI Agent
       </NodeBox>
-      <RailConnector mode="solution" />
+      <RailConnector mode="solution" compact />
       <DetailPanel
         mode="solution"
         title="ChaosChain Accountability Layer"
         bullets={["Records every action", "Verifies execution", "Scores performance", "Builds reputation"]}
         className="max-w-[26rem] text-center"
       />
-      <RailConnector mode="solution" />
+      <RailConnector mode="solution" compact />
       <HeroOutcomeBox
         mode="solution"
         title="🟢 Trusted Agent Profile"

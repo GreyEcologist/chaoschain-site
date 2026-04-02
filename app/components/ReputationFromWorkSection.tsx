@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
-import type { ReactNode } from "react";
 
 const steps = [
   {
@@ -82,7 +81,7 @@ export default function ReputationFromWorkSection() {
 
   return (
     <section aria-labelledby="reputation-from-work-title" className="section-shell">
-      <div className="mx-auto grid max-w-7xl gap-12 py-4 xl:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] xl:gap-10 xl:py-6">
+      <div className="responsive-split py-4 xl:py-6">
         <div className="min-w-0 space-y-8">
           <div className="max-w-2xl space-y-4">
             <p className="text-xs font-medium uppercase tracking-[0.22em] text-zinc-500">How Reputation Is Earned</p>
@@ -128,10 +127,6 @@ export default function ReputationFromWorkSection() {
               </motion.div>
             ))}
           </div>
-
-          <p className="max-w-2xl border-t border-zinc-800/80 pt-6 text-sm leading-relaxed text-zinc-300 md:text-base">
-            Reputation is earned through verified work - auditable by anyone, portable across platforms.
-          </p>
         </div>
 
         <motion.div
@@ -148,9 +143,6 @@ export default function ReputationFromWorkSection() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="min-w-0">
                 <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500">Causal Pipeline</p>
-                <p className="mt-2 text-sm font-medium text-zinc-200 sm:text-[15px] xl:whitespace-nowrap">
-                  real work → evidence → verification → reputation
-                </p>
               </div>
               <div className="inline-flex w-fit rounded-full border border-zinc-700/80 bg-zinc-900/80 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-zinc-400">
                 deterministic flow
@@ -173,9 +165,6 @@ export default function ReputationFromWorkSection() {
                   <h3 className="mt-2 text-sm font-medium tracking-[0.18em] text-zinc-100 sm:text-base">
                     {stageMeta[activeStage].title}
                   </h3>
-                  <p className="mt-1 text-xs uppercase tracking-[0.16em] text-zinc-500">
-                    {stageMeta[activeStage].caption}
-                  </p>
                 </div>
 
                 <button
@@ -211,7 +200,7 @@ export default function ReputationFromWorkSection() {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: reduceMotion ? 0 : -24 }}
                     transition={{ duration: 0.32, ease: "easeOut" }}
-                    className="relative overflow-hidden rounded-[1.5rem] border border-zinc-800/80 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.04),rgba(9,9,11,0.92)_55%)] p-4 sm:p-5"
+                    className="relative w-full overflow-hidden rounded-[1.5rem] border border-zinc-800/80 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.04),rgba(9,9,11,0.92)_55%)] p-4 sm:p-5"
                   >
                     <div className="pointer-events-none absolute inset-x-8 top-0 h-16 bg-[radial-gradient(circle,rgba(34,211,238,0.12),transparent_72%)] blur-2xl" />
                     <div className="relative">
@@ -256,11 +245,10 @@ export default function ReputationFromWorkSection() {
 
 function WorkSessionVisual({ reduceMotion }: { reduceMotion: boolean | null }) {
   return (
-    <div className="space-y-4">
+    <div className="w-full space-y-4">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <p className="text-[10px] uppercase tracking-[0.16em] text-zinc-500">Session Trace</p>
-          <p className="mt-2 text-sm font-medium text-zinc-100 sm:text-base">Capture what actually happened</p>
+          <p className="text-sm font-medium text-zinc-100 sm:text-base">Capture what actually happened</p>
         </div>
         <div className="rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[10px] uppercase tracking-[0.16em] text-emerald-200">
           recorded
@@ -287,10 +275,9 @@ function WorkSessionVisual({ reduceMotion }: { reduceMotion: boolean | null }) {
 
 function EvidenceGraphVisual({ reduceMotion }: { reduceMotion: boolean | null }) {
   return (
-    <div className="space-y-4">
+    <div className="w-full space-y-4">
       <div>
-        <p className="text-[10px] uppercase tracking-[0.16em] text-zinc-500">Causal Trace</p>
-        <p className="mt-2 text-sm font-medium text-zinc-100 sm:text-base">Actions linked into auditable evidence</p>
+        <p className="text-sm font-medium text-zinc-100 sm:text-base">Actions linked into auditable evidence</p>
       </div>
 
       <div className="relative h-[16rem] rounded-2xl border border-zinc-800/80 bg-zinc-950/78">
@@ -350,13 +337,11 @@ function EvidenceGraphVisual({ reduceMotion }: { reduceMotion: boolean | null })
 
 function VerificationVisual({ reduceMotion }: { reduceMotion: boolean | null }) {
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between gap-3">
+    <div className="w-full space-y-4">
+      <div>
         <div>
-          <p className="text-[10px] uppercase tracking-[0.16em] text-zinc-500">Consensus Layer</p>
-          <p className="mt-2 text-sm font-medium text-zinc-100 sm:text-base">Independent scores collapse into one output</p>
+          <p className="text-sm font-medium text-zinc-100 sm:text-base">Independent scores collapse into one output</p>
         </div>
-        <p className="text-[10px] uppercase tracking-[0.16em] text-zinc-500">MAD-based, stake-weighted</p>
       </div>
 
       <div className="grid gap-2.5">
@@ -382,10 +367,9 @@ function VerificationVisual({ reduceMotion }: { reduceMotion: boolean | null }) 
 
 function RegistryVisual({ reduceMotion }: { reduceMotion: boolean | null }) {
   return (
-    <div className="space-y-4">
+    <div className="w-full space-y-4">
       <div>
-        <p className="text-[10px] uppercase tracking-[0.16em] text-zinc-500">Final Credential</p>
-        <p className="mt-2 text-sm font-medium text-zinc-100 sm:text-base">Performance sealed into portable reputation</p>
+        <p className="text-sm font-medium text-zinc-100 sm:text-base">Performance sealed into portable reputation</p>
       </div>
 
       <motion.div

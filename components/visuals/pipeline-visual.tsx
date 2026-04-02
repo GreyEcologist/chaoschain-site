@@ -13,7 +13,7 @@ const metrics = [
   { label: "Communication", value: 90 },
 ] as const;
 
-const verificationItems = ["Execution receipts", "Evidence anchor", "Validator consensus"] as const;
+const verificationItems = ["Execution receipts", "Validator consensus"] as const;
 
 export function PipelineVisual() {
   const [scoreIndex, setScoreIndex] = useState(1);
@@ -30,30 +30,28 @@ export function PipelineVisual() {
 
   return (
     <div className="min-w-0 rounded-2xl border border-[#E5E7EB] bg-white p-4 shadow-[0_16px_45px_rgba(2,6,23,0.08)] sm:p-5 md:p-6">
-      <div className="flex flex-col items-start gap-4 sm:flex-row sm:justify-between">
-        <div className="min-w-0">
-          <h3 className="mt-2 text-2xl font-semibold tracking-tight text-[#111111]">Proof of Agency (PoA)</h3>
-        </div>
-        <div className="w-full rounded-lg border border-teal-200 bg-teal-50 px-3 py-2 text-center sm:w-auto">
-          <p className="text-[10px] uppercase tracking-[0.14em] text-teal-700/75">Trust Score</p>
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.p
-              key={trustScore}
-              initial={{ opacity: 0, y: 4 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-              transition={{ duration: 0.25 }}
-              className="mt-1 text-3xl font-semibold text-teal-700"
-            >
-              {trustScore.toFixed(1)}
-            </motion.p>
-          </AnimatePresence>
-        </div>
-      </div>
+      <div className="space-y-4">
+        <p className="text-xs uppercase tracking-[0.16em] text-zinc-500">Proof of Agency (PoA)</p>
 
-      <div className="mt-5 grid gap-3 sm:grid-cols-2">
-        <InfoField label="Agent ID" value="Agent-472" />
-        <InfoField label="Trust Score" value={trustScore.toFixed(1)} />
+        <div className="grid gap-2.5 sm:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)_minmax(0,0.82fr)]">
+          <CompactInfoField label="Agent ID" value="Agent-472" />
+          <CompactInfoField label="Status" value="Active" />
+          <div className="rounded-lg border border-teal-200 bg-teal-50 px-3 py-2.5 text-center">
+            <p className="text-[10px] uppercase tracking-[0.14em] text-teal-700/75">Trust Score</p>
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.p
+                key={trustScore}
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.25 }}
+                className="mt-1 text-2xl font-semibold text-teal-700"
+              >
+                {trustScore.toFixed(1)}
+              </motion.p>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
 
       <div className="mt-6 space-y-3">
@@ -91,10 +89,6 @@ export function PipelineVisual() {
           </motion.div>
         ))}
       </div>
-
-      <div className="mt-5 rounded-lg border border-[#E5E7EB] bg-zinc-50 px-4 py-2.5 text-xs text-zinc-600">
-        Last verified: 14:32:18
-      </div>
     </div>
   );
 }
@@ -104,7 +98,7 @@ type InfoFieldProps = {
   value: string;
 };
 
-function InfoField({ label, value }: InfoFieldProps) {
+function CompactInfoField({ label, value }: InfoFieldProps) {
   return (
     <div className="rounded-lg border border-[#E5E7EB] bg-zinc-50 px-3 py-2.5">
       <p className="text-[10px] uppercase tracking-[0.12em] text-zinc-500">{label}</p>

@@ -35,7 +35,7 @@ export function FaqSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="section-shell section-divider">
+    <section className="section-shell pt-8 md:pt-10">
       <div className="mx-auto max-w-5xl">
         <h2 className="text-left text-3xl leading-tight font-semibold text-zinc-100 md:text-5xl">
           Frequently Asked Questions

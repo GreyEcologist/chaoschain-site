@@ -26,6 +26,7 @@ html {
   width: 100%;
   min-height: 100%;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -400,5 +401,11 @@ video {
 
   .hero-depth-lights::after {
     opacity: 0.24;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

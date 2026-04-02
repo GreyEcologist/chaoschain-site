@@ -13,7 +13,7 @@ const structuralGaps = [
 
 export function ProblemSection() {
   return (
-    <section className="section-shell section-divider">
+    <section className="section-shell pt-8 md:pt-10">
       <div className="responsive-split">
         <div className="min-w-0 space-y-6">
           <SectionHeader title="The Agent Economy Has No Trust Primitive" />

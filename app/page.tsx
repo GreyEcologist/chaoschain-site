@@ -24,22 +24,6 @@ export default function Home() {
           className="hero-monument-mark-global pointer-events-none select-none"
           priority
         />
-        <div className="section-shell relative z-10 pt-6 md:pt-8">
-          <div className="logo-signal-wrap" aria-label="ChaosChain">
-            <span className="logo-signal-row logo-signal-row-1" aria-hidden="true" />
-            <span className="logo-signal-row logo-signal-row-2" aria-hidden="true" />
-            <span className="logo-signal-row logo-signal-row-3" aria-hidden="true" />
-            <span className="logo-signal-row logo-signal-row-4" aria-hidden="true" />
-            <Image
-              src="/Logo dark.png"
-              alt="ChaosChain"
-              width={360}
-              height={40}
-              className="relative z-10 h-5 w-auto md:h-7"
-              priority
-            />
-          </div>
-        </div>
         <Hero />
       </div>
       <ProblemSection />

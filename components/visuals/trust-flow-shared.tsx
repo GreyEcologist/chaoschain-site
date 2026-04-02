@@ -9,6 +9,7 @@ type FlowCardProps = {
   mode: Mode;
   title: string;
   sectionLabel?: string;
+  contentClassName?: string;
   children: ReactNode;
 };
 
@@ -105,7 +106,7 @@ const modeClasses = {
   },
 };
 
-export function FlowCard({ mode, title, sectionLabel, children }: FlowCardProps) {
+export function FlowCard({ mode, title, sectionLabel, contentClassName, children }: FlowCardProps) {
   const colors = modeClasses[mode];
 
   return (
@@ -132,26 +133,24 @@ export function FlowCard({ mode, title, sectionLabel, children }: FlowCardProps)
           <p className="mt-6 text-center text-[10px] uppercase tracking-[0.26em] text-zinc-500 md:text-xs">{sectionLabel}</p>
         ) : null}
 
-        <div className="relative mt-8 flex flex-col items-center gap-6 md:mt-10 md:gap-7">{children}</div>
+        <div className={`relative mt-8 flex flex-col items-center gap-6 md:mt-10 md:gap-7 ${contentClassName ?? ""}`}>
+          {children}
+        </div>
       </div>
     </div>
   );
 }
 
-export function RailConnector({ mode }: { mode: Mode }) {
-  const colors = modeClasses[mode];
-
+export function RailConnector({ mode, compact = false }: { mode: Mode; compact?: boolean }) {
   return (
-    <div className="relative z-10 flex flex-col items-center">
-      <div className={`h-4 w-px ${colors.railSegment}`} />
+    <div className={`relative z-10 flex items-center justify-center ${compact ? "h-3" : "h-4"}`}>
       <motion.div
-        className={`grid h-8 w-8 place-items-center rounded-full border text-lg ${colors.arrowBorder} ${colors.arrowBg} ${colors.arrow} ${colors.arrowGlow}`}
-        animate={{ y: [0, 2, 0], opacity: [0.72, 1, 0.72] }}
-        transition={{ duration: 3.6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+        className={`${compact ? "text-sm" : "text-base"} leading-none text-center ${mode === "solution" ? "text-cyan-100/78" : "text-red-100/65"}`}
+        animate={{ opacity: [0.35, 0.85, 0.35], y: [0, 2, 0] }}
+        transition={{ duration: 3.2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
       >
         ↓
       </motion.div>
-      <div className={`h-4 w-px ${colors.railSegment}`} />
     </div>
   );
 }
