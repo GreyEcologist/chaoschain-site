@@ -4,8 +4,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: "ChaosChain Pricing | Trust Infrastructure For Autonomous Agents",
-  description: "Pricing for ChaosChain trust infrastructure, team agent accountability, and enterprise policy controls.",
+  title: "Worldline Pricing | ChaosChain",
+  description: "Pricing for Worldline agent decisions, coding-agent trust profiles, and team recommendations.",
 };
 
 export default function PricingPage() {

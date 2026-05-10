@@ -5,28 +5,28 @@ import { motion } from "framer-motion";
 const studios = [
   {
     index: "01",
+    name: "Worldline",
+    detail:
+      "The decision layer for AI coding agents. Captures coding sessions, scores them across five dimensions, and recommends which agent to trust for production, prototyping, or review.",
+    revenue: "Live Studio (studio.chaoscha.in)",
+  },
+  {
+    index: "02",
     name: "Savings",
     detail: "AI manages user funds with PoA.",
     revenue: "Consumer / DeFi Fees (management fees, yield spread, performance fees)",
   },
   {
-    index: "02",
+    index: "03",
     name: "Insurance",
     detail: "Underwrites agent risk based on PoA.",
     revenue: "Premiums + Risk Pricing Fees (protocols, vaults, agents)",
   },
   {
-    index: "03",
+    index: "04",
     name: "Compliance",
     detail: "Provides audit trails for AI.",
     revenue: "Enterprise SaaS + API Usage (banks, neobanks, fintechs)",
-  },
-  {
-    index: "04",
-    name: "Engineer",
-    detail:
-      "Trust and evaluation layer for AI coding agents. Captures how agents work inside sessions: planning, implementation, debugging, revisions. Generates a verifiable trust and performance profile for agents.",
-    revenue: "Dev Tooling + API + CI/CD Integrations (teams, platforms, infra providers)",
   },
 ];
 
@@ -40,13 +40,17 @@ export function StudioCards() {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
       >
-        Studio Index
+        Studio Focus
       </motion.p>
       <div className="grid gap-3.5 sm:grid-cols-2">
         {studios.map((studio, i) => (
           <motion.div
             key={studio.name}
-            className="group relative flex h-full min-h-[16.5rem] flex-col rounded-2xl border border-zinc-800 bg-zinc-900/60 p-5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.015)]"
+            className={`group relative flex h-full min-h-[16.5rem] flex-col rounded-2xl border p-5 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.015)] ${
+              studio.name === "Worldline"
+                ? "border-cyan-400/30 bg-cyan-950/20 shadow-[0_0_35px_rgba(34,211,238,0.08),inset_0_0_0_1px_rgba(255,255,255,0.02)] sm:col-span-2"
+                : "border-zinc-800 bg-zinc-900/60"
+            }`}
             initial={{ opacity: 0, y: 16, filter: "blur(6px)" }}
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true, amount: 0.2 }}

@@ -5,10 +5,10 @@ import { SectionHeader } from "@/components/section-header";
 import { ProblemTrustVisual } from "@/components/visuals/problem-trust-visual";
 
 const structuralGaps = [
-  { index: "01", label: "No verifiable execution history" },
-  { index: "02", label: "No portable track record" },
-  { index: "03", label: "No behavioral audit trail" },
-  { index: "04", label: "No underwriting standard" },
+  { index: "01", label: "Same model, different behavior across setups" },
+  { index: "02", label: "Static benchmarks miss production reality" },
+  { index: "03", label: "No behavioral audit trail from real sessions" },
+  { index: "04", label: "No clear answer for which agent to trust next" },
 ] as const;
 
 export function ProblemSection() {
@@ -16,11 +16,11 @@ export function ProblemSection() {
     <section className="section-shell pt-8 md:pt-10">
       <div className="responsive-split">
         <div className="min-w-0 space-y-6">
-          <SectionHeader title="The Agent Economy Has No Trust Primitive" />
+          <SectionHeader title="You Do Not Have an AI Problem. You Have a Trust Problem." />
           <div className="space-y-5 text-zinc-400">
             <p>
-              AI agents will execute autonomous transactions across trade finance, treasury management, cross-chain
-              operations, and payments.
+              The same AI agent can behave differently depending on setup, codebase, prompt, and context. A model name
+              alone tells you almost nothing.
             </p>
             <div>
               <motion.p
@@ -30,7 +30,7 @@ export function ProblemSection() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               >
-                Structural Gaps
+                Why Worldline Exists
               </motion.p>
               <ul className="space-y-2 text-zinc-300">
                 {structuralGaps.map((gap, index) => (
@@ -54,10 +54,10 @@ export function ProblemSection() {
                 ))}
               </ul>
             </div>
-            <p>Enterprises cannot delegate capital to an agent they cannot hold accountable.</p>
-            <p>This is not a UX issue.</p>
-            <p>It is a structural trust gap.</p>
-            <p>The agent economy is waiting for its risk infrastructure.</p>
+            <p>Worldline focuses on the immediate engineering question: which coding agent earned trust on real work?</p>
+            <p className="text-zinc-200">
+              ChaosChain is the long-term trust infrastructure. Worldline is the product teams can use now.
+            </p>
           </div>
         </div>
         <div className="min-w-0">

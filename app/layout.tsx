@@ -2,29 +2,31 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://chaoschain.xyz"),
-  title: "ChaosChain | The Underwriting Layer for Autonomous Agents",
+  metadataBase: new URL("https://chaoscha.in"),
+  title: "ChaosChain | Worldline for AI Coding Agents",
   description:
-    "ChaosChain is the underwriting layer for autonomous agents, making performance auditable, accountable, and underwritable.",
+    "Worldline by ChaosChain is the decision layer for AI coding agents, scoring real sessions so teams know which agent to trust.",
   keywords: [
     "ChaosChain",
+    "Worldline",
     "autonomous agents",
+    "AI coding agents",
     "agent underwriting",
     "Proof of Agency",
     "agent reputation",
     "trust API",
   ],
   openGraph: {
-    title: "ChaosChain",
-    description: "The underwriting layer for autonomous agents.",
-    url: "https://chaoschain.xyz",
+    title: "ChaosChain | Worldline",
+    description: "The decision layer for AI coding agents.",
+    url: "https://chaoscha.in",
     siteName: "ChaosChain",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ChaosChain",
-    description: "The underwriting layer for autonomous agents.",
+    title: "ChaosChain | Worldline",
+    description: "The decision layer for AI coding agents.",
   },
 };
 

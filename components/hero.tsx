@@ -9,28 +9,34 @@ export function Hero() {
       <div className="section-shell relative z-10">
         <div className="responsive-split items-start gap-12 pt-12 md:pt-16">
           <div className="relative z-10 min-w-0 space-y-5 md:space-y-6">
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cyan-700/80">
+              Worldline by ChaosChain
+            </p>
             <h1 className="max-w-[11.5ch] text-4xl leading-[0.95] font-semibold text-[#111111] sm:max-w-[10.75ch] sm:text-5xl md:max-w-[10ch] md:text-[4.8rem]">
-              The Accountability Protocol for Autonomous Agents
+              The decision layer for AI agents
             </h1>
             <p className="max-w-[34rem] text-lg leading-relaxed text-[#6B7280] md:text-[1.15rem]">
-              ChaosChain gives organizations accountability and governance over autonomous AI agents.
+              Worldline captures real coding sessions, scores them across five trust dimensions, and tells teams which AI
+              agent to use for the job.
+            </p>
+            <p className="max-w-[34rem] text-sm leading-relaxed text-zinc-500">
+              ChaosChain is the broader accountability protocol. Worldline is the live studio built on it for engineering
+              teams choosing between Claude Code, Codex, Cursor, and other agents.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <Link
-                href="https://github.com/ChaosChain/chaoschain"
+                href="https://studio.chaoscha.in/"
                 className="inline-flex h-11 w-full items-center justify-center rounded-xl border border-zinc-900 bg-zinc-900 px-4 text-sm font-medium text-white transition hover:bg-zinc-800 sm:w-auto"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Start Building
+                Try Worldline
               </Link>
               <Link
-                href="https://studio.chaoscha.in/"
+                href="#worldline"
                 className="inline-flex h-11 w-full items-center justify-center rounded-xl border border-zinc-300 bg-white px-4 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100 sm:w-auto"
-                target="_blank"
-                rel="noopener noreferrer"
               >
-                See Studios
+                See how it works
               </Link>
             </div>
           </div>

@@ -16,8 +16,8 @@ export function SiteFooter() {
 
         <div className="flex items-center gap-3">
           <a
-            href="https://docs.chaoscha.in/overview/introduction"
-            aria-label="ChaosChain docs"
+            href="https://studio.chaoscha.in/docs"
+            aria-label="Worldline docs"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-zinc-700/90 bg-zinc-950/70 text-zinc-300 transition-colors hover:border-cyan-500/30 hover:text-cyan-100"
