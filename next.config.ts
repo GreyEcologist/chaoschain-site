@@ -4,6 +4,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "chaoschain.ghost.io" },
+      { protocol: "https", hostname: "storage.ghost.io" },
     ],
   },
   async redirects() {

@@ -64,48 +64,53 @@ export default async function BlogIndexPage() {
               key={post.slug}
               className="group rounded-lg border border-zinc-800/90 bg-zinc-950/55 p-5 transition-colors duration-200 hover:border-cyan-400/35 md:p-7"
             >
-              <Link href={`/blog/${post.slug}`} className="block">
+              <Link
+                href={`/blog/${post.slug}`}
+                className="flex flex-col gap-5 md:flex-row md:items-start md:gap-6"
+              >
                 {post.image ? (
-                  <div className="relative mb-5 aspect-[1200/630] w-full overflow-hidden rounded-md border border-zinc-800/60">
+                  <div className="relative aspect-[1200/630] w-full shrink-0 overflow-hidden rounded-md border border-zinc-800/60 md:w-48 lg:w-56">
                     <Image
                       src={post.image}
                       alt={post.title}
                       fill
-                      sizes="(min-width: 768px) 768px, 100vw"
+                      sizes="(min-width: 1024px) 224px, (min-width: 768px) 192px, 100vw"
                       className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                     />
                   </div>
                 ) : null}
-                <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-500">
-                  <time dateTime={post.date}>
-                    {new Intl.DateTimeFormat("en", {
-                      month: "long",
-                      day: "numeric",
-                      year: "numeric",
-                      timeZone: "UTC",
-                    }).format(new Date(post.date))}
-                  </time>
-                  <span aria-hidden="true">/</span>
-                  <span>{post.readingTime}</span>
-                </div>
-                <h2 className="mt-4 text-2xl font-semibold text-zinc-100 transition-colors duration-200 group-hover:text-cyan-100 md:text-3xl">
-                  {post.title}
-                </h2>
-                <p className="mt-3 max-w-3xl text-base leading-7 text-zinc-400">
-                  {post.description}
-                </p>
-                {post.tags?.length ? (
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-md border border-zinc-800 bg-zinc-900/70 px-2.5 py-1 text-xs font-medium text-zinc-400"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                <div className="min-w-0 flex-1">
+                  <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-500">
+                    <time dateTime={post.date}>
+                      {new Intl.DateTimeFormat("en", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                        timeZone: "UTC",
+                      }).format(new Date(post.date))}
+                    </time>
+                    <span aria-hidden="true">/</span>
+                    <span>{post.readingTime}</span>
                   </div>
-                ) : null}
+                  <h2 className="mt-4 text-2xl font-semibold text-zinc-100 transition-colors duration-200 group-hover:text-cyan-100 md:text-3xl">
+                    {post.title}
+                  </h2>
+                  <p className="mt-3 max-w-3xl text-base leading-7 text-zinc-400">
+                    {post.description}
+                  </p>
+                  {post.tags?.length ? (
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-md border border-zinc-800 bg-zinc-900/70 px-2.5 py-1 text-xs font-medium text-zinc-400"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
               </Link>
             </article>
           ))}
