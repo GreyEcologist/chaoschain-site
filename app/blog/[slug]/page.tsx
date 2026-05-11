@@ -63,7 +63,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   return (
     <main className="relative min-h-screen overflow-x-clip">
       <div className="page-grid pointer-events-none absolute inset-0 -z-10" />
-      <section className="relative bg-[linear-gradient(180deg,rgba(14,15,19,0.98),rgba(9,10,14,1))] pt-6 md:pt-8">
+      <section className="relative pt-6 md:pt-8">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.06),transparent_34%),linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:auto,40px_40px,40px_40px] opacity-70" />
         <SiteHeader theme="dark" />
         <article className="section-shell relative z-10 pt-14 pb-14 md:pt-20 md:pb-20">
