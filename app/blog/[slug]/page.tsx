@@ -66,10 +66,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.06),transparent_34%),linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:auto,40px_40px,40px_40px] opacity-70" />
         <SiteHeader theme="dark" />
         <article className="section-shell relative z-10 pt-14 pb-14 md:pt-20 md:pb-20">
-          <Link href="/blog" className="text-sm font-medium text-cyan-200/80 transition-colors hover:text-cyan-100">
-            Back to blog
-          </Link>
-          <div className="mt-10 max-w-3xl">
+          <div className="mx-auto max-w-3xl">
+            <Link href="/blog" className="text-sm font-medium text-cyan-200/80 transition-colors hover:text-cyan-100">
+              Back to blog
+            </Link>
+          </div>
+          <div className="mx-auto mt-10 max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-500">
               <time dateTime={post.date}>
                 {new Intl.DateTimeFormat("en", {
@@ -94,7 +96,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </section>
 
       <article className="section-shell py-12 md:py-16">
-        <div className="max-w-3xl">
+        <div className="mx-auto max-w-3xl">
           {/* Ghost HTML rendered via Tailwind Typography */}
           <div
             className="prose prose-invert prose-cyan max-w-none
