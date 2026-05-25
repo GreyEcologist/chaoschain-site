@@ -6,6 +6,15 @@ import { SiteHeader } from "@/components/site-header";
 export const metadata: Metadata = {
   title: "Worldline Pricing | ChaosChain",
   description: "Pricing for Worldline agent decisions, coding-agent trust profiles, and team recommendations.",
+  alternates: { canonical: "/pricing" },
+  openGraph: {
+    title: "Worldline Pricing | ChaosChain",
+    description: "Pricing for Worldline agent decisions, coding-agent trust profiles, and team recommendations.",
+    url: "https://chaoscha.in/pricing",
+    siteName: "ChaosChain",
+    type: "website",
+    images: [{ url: "/Logo mark dark.png", width: 1201, height: 1296, alt: "ChaosChain" }],
+  },
 };
 
 export default function PricingPage() {

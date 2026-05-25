@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     url: `${siteUrl}/blog`,
     siteName: "ChaosChain",
     type: "website",
+    images: [{ url: "/Logo mark dark.png", width: 1201, height: 1296, alt: "ChaosChain" }],
   },
   twitter: {
     card: "summary_large_image",

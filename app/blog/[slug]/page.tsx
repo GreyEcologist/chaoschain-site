@@ -60,8 +60,29 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     notFound();
   }
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.description,
+    url: `${siteUrl}/blog/${post.slug}`,
+    datePublished: post.date,
+    dateModified: post.updated ?? post.date,
+    ...(post.author && { author: { "@type": "Person", name: post.author } }),
+    ...(post.image && { image: post.image }),
+    publisher: {
+      "@type": "Organization",
+      name: "ChaosChain",
+      logo: { "@type": "ImageObject", url: `${siteUrl}/Logo mark dark.png` },
+    },
+  };
+
   return (
     <main className="relative min-h-screen overflow-x-clip">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <div className="page-grid pointer-events-none absolute inset-0 -z-10" />
       <section className="relative pt-6 md:pt-8">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.06),transparent_34%),linear-gradient(to_right,rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:auto,40px_40px,40px_40px] opacity-70" />
