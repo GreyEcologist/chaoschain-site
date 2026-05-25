@@ -10,6 +10,7 @@
     "lint:blog": "node scripts/lint-blog-content.mjs"
   },
   "dependencies": {
+    "@amplitude/analytics-browser": "^2.42.4",
     "@tailwindcss/typography": "^0.5.19",
     "@tryghost/content-api": "^1.12.7",
     "@vercel/analytics": "^2.0.1",
