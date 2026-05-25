@@ -13,10 +13,11 @@ export default function AmplitudeAnalytics() {
 
     const params = new URLSearchParams(window.location.search);
     const id = new amplitude.Identify();
-    id.set('utm_source',   params.get('utm_source'));
-    id.set('utm_medium',   params.get('utm_medium'));
-    id.set('utm_campaign', params.get('utm_campaign'));
-    id.set('utm_content',  params.get('utm_content'));
+    const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'] as const;
+    for (const key of utmKeys) {
+      const val = params.get(key);
+      if (val) id.set(key, val);
+    }
     amplitude.identify(id);
   }, []);
 
