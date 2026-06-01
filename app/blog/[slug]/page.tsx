@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
@@ -115,25 +114,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </h1>
             <p className="mt-6 text-lg leading-8 text-zinc-300">{post.description}</p>
           </div>
-          {post.image ? (
-            <div className="mx-auto mt-12 max-w-4xl">
-              <div className="relative w-full overflow-hidden rounded-lg border border-zinc-800/60">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  width={1200}
-                  height={630}
-                  sizes="(min-width: 1024px) 896px, 100vw"
-                  priority
-                  className="h-auto w-full"
-                />
-              </div>
-            </div>
-          ) : null}
         </article>
       </section>
 
-      <article className="section-shell py-12 md:py-16">
+      <article className="section-shell pt-0 pb-12 md:pb-16">
         <div className="mx-auto max-w-3xl">
           {/* Ghost HTML rendered via Tailwind Typography */}
           <div
