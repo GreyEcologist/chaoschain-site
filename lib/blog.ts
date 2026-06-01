@@ -18,6 +18,8 @@ export type BlogPost = {
   author?: string;
   tags?: string[];
   image?: string;
+  imageAlt?: string;
+  imageCaption?: string;
   canonicalUrl?: string;
   mediumUrl?: string;
   content: string; // Ghost HTML
@@ -36,6 +38,8 @@ function mapPost(post: any): BlogPost {
     author: post.authors?.[0]?.name,
     tags: post.tags?.map((t: { name: string }) => t.name) ?? [],
     image: post.feature_image ?? undefined,
+    imageAlt: post.feature_image_alt ?? undefined,
+    imageCaption: post.feature_image_caption ?? undefined,
     canonicalUrl: post.canonical_url || `${siteUrl}/blog/${post.slug}`,
     content: post.html ?? "",
     readingTime: `${post.reading_time ?? 1} min read`,

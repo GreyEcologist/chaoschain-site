@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
@@ -112,8 +113,30 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <h1 className="mt-5 text-4xl leading-tight font-semibold text-white md:text-6xl">
               {post.title}
             </h1>
-            <p className="mt-6 text-lg leading-8 text-zinc-300">{post.description}</p>
           </div>
+          {post.image ? (
+            <div className="mx-auto mt-10 max-w-4xl">
+              <figure>
+                <div className="relative w-full overflow-hidden rounded-lg border border-zinc-800/60">
+                  <Image
+                    src={post.image}
+                    alt={post.imageAlt || post.title}
+                    width={1200}
+                    height={630}
+                    sizes="(min-width: 1024px) 896px, 100vw"
+                    priority
+                    className="h-auto w-full"
+                  />
+                </div>
+                {post.imageCaption ? (
+                  <figcaption
+                    className="mt-3 text-center text-sm text-zinc-500"
+                    dangerouslySetInnerHTML={{ __html: post.imageCaption }}
+                  />
+                ) : null}
+              </figure>
+            </div>
+          ) : null}
         </article>
       </section>
 
