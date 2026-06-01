@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 import { getAllPosts, getPostBySlug, siteUrl } from "@/lib/blog";
 
 export const revalidate = 3600;
+export const dynamicParams = true;
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
